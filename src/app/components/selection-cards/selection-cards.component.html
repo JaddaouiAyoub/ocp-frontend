@@ -1,0 +1,7 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+  <div *ngFor="let item of items" class="card">
+    <button (click)="onItemClick(item)" class="w-full h-full p-6 text-lg font-semibold text-white bg-blue-600 rounded-2xl hover:bg-blue-700 transition">
+      {{ item }}
+    </button>
+  </div>
+</div>
