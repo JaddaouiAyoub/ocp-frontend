@@ -45,7 +45,7 @@ export class HomeComponent {
         localStorage.setItem('refresh_token', res.refreshToken);
         localStorage.setItem('email', res.email); // il faut que le backend renvoie l'email ici
         localStorage.setItem('role', res.role); // il faut que le backend renvoie le rôle ici
-
+        localStorage.setItem('username', res.nom); // il faut que le backend renvoie le nom d'utilisateur ici
         if (res.role === 'ADMIN') {
           this.router.navigate(['/dashboard/admin']);
         } else if (res.role === 'USER') {

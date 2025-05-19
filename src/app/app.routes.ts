@@ -5,6 +5,8 @@ import {AdminDashboardComponent} from './pages/admin-dashboard/admin-dashboard.c
 import {UserDashboardComponent} from './pages/user-dashboard/user-dashboard.component';
 import {homeGuard} from './guards/home.guard';
 import {ChangePasswordComponent} from './pages/change-password/change-password.component';
+import {SelectionCardsComponent} from './components/selection-cards/selection-cards.component';
+import {ClientDetailComponent} from './components/client-detail/client-detail.component';
 
 export const routes: Routes = [
   {
@@ -16,7 +18,17 @@ export const routes: Routes = [
     path: 'dashboard/admin',
     component: AdminDashboardComponent,
     canActivate: [AuthGuard],
-    data: { role: 'ADMIN' }
+    data: { role: 'ADMIN' },
+    children: [
+      {
+        path: 'client/:name',
+        component: ClientDetailComponent
+      },
+      {
+        path: '',
+        component: SelectionCardsComponent
+      }
+    ]
   },
   {
     path: 'dashboard/user',

@@ -11,6 +11,7 @@ interface AuthResponse {
   refreshToken: string;
   email: string;
   role: string;
+  nom: string;
   // ajoute les autres champs si nécessaires
 }
 @Injectable({

@@ -1,0 +1,52 @@
+<div class="max-w-xl mx-auto p-6">
+  <h2 class="text-2xl font-bold text-center mb-6">Prédiction pour {{ clientName }}</h2>
+
+  <form (ngSubmit)="submitPrediction()" class="space-y-4">
+    <!-- Date Picker -->
+    <div>
+      <label class="block mb-1 font-medium text-gray-700">Date :</label>
+      <input
+        type="date"
+        [(ngModel)]="date"
+        name="date"
+        required
+        class="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+      />
+    </div>
+
+    <!-- Heure Picker -->
+    <div>
+      <label class="block mb-1 font-medium text-gray-700">Heure :</label>
+      <input
+        type="time"
+        [(ngModel)]="heure"
+        name="heure"
+        required
+        class="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+      />
+    </div>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      [disabled]="loading"
+      class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-2xl transition"
+    >
+      {{ loading ? 'Chargement...' : 'Lancer la prédiction' }}
+    </button>
+  </form>
+
+  <!-- Résultat -->
+  <div *ngIf="predictionResult" class="mt-6 p-4 bg-green-100 border border-green-300 rounded-xl text-green-800">
+    <h3 class="text-lg font-semibold mb-2">Résultat :</h3>
+    <p><strong>Client :</strong> {{ predictionResult.client }}</p>
+    <p><strong>Date :</strong> {{ predictionResult.date }}</p>
+    <p><strong>Heure :</strong> {{ predictionResult.heure }}</p>
+    <p><strong>Prédiction :</strong> {{ predictionResult.prediction }}</p>
+  </div>
+
+  <!-- Erreur -->
+  <div *ngIf="errorMessage" class="mt-6 p-4 bg-red-100 border border-red-300 rounded-xl text-red-800">
+    <strong>Erreur :</strong> {{ errorMessage }}
+  </div>
+</div>

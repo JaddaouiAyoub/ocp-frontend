@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {NgIf} from '@angular/common';
 import {SelectionCardsComponent} from '../../components/selection-cards/selection-cards.component';
+import {NavbarComponent} from '../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,7 +10,9 @@ import {SelectionCardsComponent} from '../../components/selection-cards/selectio
   standalone: true,
   imports: [
     NgIf,
-    SelectionCardsComponent
+    SelectionCardsComponent,
+    NavbarComponent,
+    RouterOutlet
   ],
   styleUrls: ['./admin-dashboard.component.css']
 })
@@ -29,5 +32,8 @@ export class AdminDashboardComponent {
 
   changePassword() {
     this.router.navigate(['dashboard/change-password']);
+  }
+  getUsename() {
+    return localStorage.getItem('username');
   }
 }
