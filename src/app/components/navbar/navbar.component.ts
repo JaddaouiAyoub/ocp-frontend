@@ -31,4 +31,13 @@ export class NavbarComponent {
   getUsename() {
     return localStorage.getItem('username');
   }
+  // Fermer le menu si on clique à l'extérieur
+  closeMenu() {
+    this.showMenu = false;
+  }
+
+// Empêche la propagation du clic vers le parent
+  stopPropagation(event: MouseEvent) {
+    event.stopPropagation();
+  }
 }

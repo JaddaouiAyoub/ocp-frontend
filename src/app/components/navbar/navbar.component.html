@@ -1,19 +1,44 @@
-<div class="flex justify-between items-center bg-white p-4 rounded shadow">
-  <h1 class="text-xl font-bold text-gray-800">Hello {{getUsename()}}</h1>
+<!-- wrapper avec gestion du clic extérieur -->
+<div (click)="closeMenu()" class="relative">
+  <div class="flex justify-between items-center bg-white p-4 rounded shadow">
+    <!-- Logo -->
+    <img
+      src="/assets/ocp.png"
+      alt="Logo"
+      class="w-20 h-15 transform transition-transform duration-300 hover:rotate-12"
+    />
 
-  <div class="relative">
-    <button
-      (click)="toggleMenu()"
-      class="text-gray-600 hover:text-black text-2xl"
-      aria-label="Options"
-    >
-      ☰
-    </button>
+    <!-- Nom + menu -->
+    <div class="flex items-center space-x-4 relative" (click)="stopPropagation($event)">
+      <h1 class="text-xl font-bold text-gray-800">{{ getUsename() }}</h1>
 
-    <div *ngIf="showMenu" class="absolute right-0 mt-2 w-48 bg-white rounded shadow-md z-10">
-      <button (click)="logout()" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
-      <button (click)="changePassword()" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Changer le mot de passe</button>
+      <!-- Bouton menu -->
+      <button
+        (click)="toggleMenu()"
+        class="text-gray-600 hover:text-black text-2xl"
+        aria-label="Options"
+      >
+        ☰
+      </button>
+
+      <!-- Dropdown -->
+      <div
+        *ngIf="showMenu"
+        class="absolute right-0 top-full mt-2 w-48 bg-white rounded shadow-md z-10"
+      >
+        <button
+          (click)="logout()"
+          class="block w-full text-left px-4 py-2 hover:bg-gray-100"
+        >
+          Logout
+        </button>
+        <button
+          (click)="changePassword()"
+          class="block w-full text-left px-4 py-2 hover:bg-gray-100"
+        >
+          Changer le mot de passe
+        </button>
+      </div>
     </div>
   </div>
 </div>
-
